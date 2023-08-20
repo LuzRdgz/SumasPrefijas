@@ -1,11 +1,7 @@
 package org.example;
 
-import com.opencsv.CSVWriter;
-
 import java.io.*;
 import java.util.Arrays;
-import java.util.List;
-
 
 public class Main {
     public static void main(String[] args) {
@@ -46,8 +42,19 @@ public class Main {
             sumP = sumP + vent[i];
             ventas[i] = sumP;
         }
-        for (int i = 0; i< vent.length; i++){
+
+       /* for (int i = 0; i< vent.length; i++){
             System.out.println(ventas[i]);
+        }*/
+
+        //crear archivo csv
+        String new_archivoCSV = "C:\\Users\\LuzRd\\Desktop\\car_sales_SumPref.csv";
+        try {
+            BufferedWriter escribir = new BufferedWriter(new FileWriter(new_archivoCSV));
+            escribir.write(Arrays.toString(ventas));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
